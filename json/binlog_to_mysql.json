@@ -1,0 +1,32 @@
+{
+  "job" : {
+    "content" : [ {
+      "reader" : {
+        "parameter" : {
+          "jdbcUrl" : "jdbc:mysql://10.128.123.154:3306/ai-cloud-device?charset=utf8",
+          "username" : "cloudwalk",
+          "password" : "cloudwalk",
+          "host" : "10.128.123.154",
+          "table" : [ "test" ],
+          "cat" : "insert,update,delete",
+          "schema" : "ai-cloud-device",
+          "pavingData" : true
+        },
+        "name" : "binlogreader"
+      },
+      "writer" : {
+        "parameter" : {
+          "producerSettings" : {
+            "zookeeper.connect" : "10.128.123.154:12181/kafka,10.128.123.154:22181/kafka,10.128.123.154:32181/kafka",
+            "bootstrap.servers" : "10.128.123.154:19092,10.128.123.154:29092,10.128.123.154:39092"
+          },
+          "topic" : "binlog_test"
+        },
+        "name" : "kafka11writer"
+      }
+    }
+    ],
+    "setting" : {
+    }
+  }
+}

@@ -352,16 +352,6 @@
             <artifactId>flinkx-emqx-writer</artifactId>
             <version>${flinkx.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.dtstack.flinkx</groupId>
-            <artifactId>flinkx-dm-reader</artifactId>
-            <version>${flinkx.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.dtstack.flinkx</groupId>
-            <artifactId>flinkx-dm-writer</artifactId>
-            <version>${flinkx.version}</version>
-        </dependency>
     </dependencies>
 
 

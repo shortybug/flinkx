@@ -31,8 +31,6 @@ import com.dtstack.flinkx.config.SpeedConfig;
 import com.dtstack.flinkx.constants.ConfigConstant;
 import com.dtstack.flinkx.db2.reader.Db2Reader;
 import com.dtstack.flinkx.db2.writer.Db2Writer;
-import com.dtstack.flinkx.dm.reader.DmReader;
-import com.dtstack.flinkx.dm.writer.DmWriter;
 import com.dtstack.flinkx.emqx.reader.EmqxReader;
 import com.dtstack.flinkx.emqx.writer.EmqxWriter;
 import com.dtstack.flinkx.es.reader.EsReader;
@@ -127,8 +125,8 @@ public class LocalTest {
 //        conf.setString("metrics.reporter.promgateway.jobName","kanata");
 //        conf.setString("metrics.reporter.promgateway.randomJobNameSuffix","true");
 //        conf.setString("metrics.reporter.promgateway.deleteOnShutdown","false");
-
-        String jobPath = "D:\\dtstack\\flinkx-all\\flinkx-examples\\examples\\clickhouse_stream.json";
+        String jobPath = "D:\\flinkx\\json\\binlog.json";
+    //tring jobPath = "D:\\dtstack\\flinkx-all\\flinkx-examples\\examples\\clickhouse_stream.json";
         String savePointPath = "";
         JobExecutionResult result = LocalTest.runJob(new File(jobPath), confProperties, savePointPath);
         ResultPrintUtil.printResult(result);
@@ -259,9 +257,6 @@ public class LocalTest {
             case PluginNameConstants.EMQX_READER:
                 reader = new EmqxReader(config, env);
                 break;
-            case PluginNameConstants.DM_READER:
-                reader = new DmReader(config, env);
-                break;
             default:
                 throw new IllegalArgumentException("Can not find reader by name:" + readerName);
         }
@@ -347,9 +342,6 @@ public class LocalTest {
                 break;
             case PluginNameConstants.EMQX_WRITER:
                 writer = new EmqxWriter(config);
-                break;
-            case PluginNameConstants.DM_WRITER:
-                writer = new DmWriter(config);
                 break;
             default:
                 throw new IllegalArgumentException("Can not find writer by name:" + writerName);

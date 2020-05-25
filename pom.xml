@@ -23,9 +23,6 @@
         <module>flinkx-oracle</module>
         <module>flinkx-sqlserver</module>
         <module>flinkx-postgresql</module>
-        <module>flinkx-db2</module>
-        <module>flinkx-dm</module>
-        <module>flinkx-gbase</module>
         <module>flinkx-clickhouse</module>
         <module>flinkx-saphana</module>
         <module>flinkx-teradata</module>

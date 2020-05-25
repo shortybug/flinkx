@@ -1,0 +1,57 @@
+{
+  "job": {
+    "setting": {
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "root",
+            "password": "123",
+            "column": [
+              "uid",
+              "name",
+              "age"
+            ],
+            "connection": [
+              {
+                "table": [
+                  "test"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://127.0.0.1:3306/ai-cloud-device?useCursorFetch=true"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "mysqlwriter",
+          "parameter": {
+            "writeMode": "insert",
+            "username": "cloudwalk",
+            "password": "cloudwalk",
+            "column": [
+              "uid",
+              "name",
+              "age"
+            ],
+            "batchSize": 1,
+            "session": [
+              "set session sql_mode='ANSI'"
+            ],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:mysql://10.128.123.154:3306/ai-cloud-device?useCursorFetch=true",
+                "table": [
+                  "test"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "job" : {
+    "content" : [ {
+      "reader" : {
+        "parameter" : {
+          "jdbcUrl" : "jdbc:mysql://10.128.123.154:3306/ai-cloud-device?charset=utf8",
+          "username" : "cloudwalk",
+          "password" : "cloudwalk",
+          "host" : "10.128.123.154",
+          "table" : [ "cw_ge_device" ],
+          "cat" : "insert,update,delete",
+          "schema" : "ai-cloud-device",
+          "pavingData" : true
+        },
+        "name" : "binlogreader"
+      },
+      "writer" : {
+        "parameter" : {
+          "producerSettings" : {
+            "zookeeper.connect" : "10.128.123.154:12181/kafka,10.128.123.154:22181/kafka,10.128.123.154:32181/kafka",
+            "bootstrap.servers" : "10.128.123.154:19092,10.128.123.154:29092,10.128.123.154:39092"
+          },
+          "topic" : "binlog_ai-cloud-device"
+        },
+        "name" : "kafka11writer"
+      }
+    },
+      {
+	  "reader" : {
+        "parameter" : {
+          "jdbcUrl" : "jdbc:mysql://10.128.123.154:3306/ai-cloud-portal?charset=utf8",
+          "username" : "cloudwalk",
+          "password" : "cloudwalk",
+          "host" : "10.128.123.154",
+          "table" : [ "plat_application","plat_enterprise_info" ],
+          "cat" : "insert,update,delete",
+          "schema" : "ai-cloud-portal",
+          "pavingData" : true
+        },
+        "name" : "binlogreader"
+      },
+      "writer" : {
+        "parameter" : {
+          "producerSettings" : {
+            "zookeeper.connect" : "10.128.123.154:12181/kafka,10.128.123.154:22181/kafka,10.128.123.154:32181/kafka",
+            "bootstrap.servers" : "10.128.123.154:19092,10.128.123.154:29092,10.128.123.154:39092"
+          },
+          "topic" : "binlog_ai-cloud-portal"
+        },
+        "name" : "kafka11writer"
+      }
+    },
+      {
+	    "reader" : {
+        "parameter" : {
+          "jdbcUrl" : "jdbc:mysql://10.128.123.154:3306/ai-cloud-smart?charset=utf8",
+          "username" : "cloudwalk",
+          "password" : "cloudwalk",
+          "host" : "10.128.123.154",
+          "table" : [ "cw_bus_store" ],
+          "cat" : "insert,update,delete",
+          "schema" : "ai-cloud-smart",
+          "pavingData" : true
+        },
+        "name" : "binlogreader"
+      },
+        "writer" : {
+        "parameter" : {
+          "producerSettings" : {
+            "zookeeper.connect" : "10.128.123.154:12181/kafka,10.128.123.154:22181/kafka,10.128.123.154:32181/kafka",
+            "bootstrap.servers" : "10.128.123.154:19092,10.128.123.154:29092,10.128.123.154:39092"
+          },
+          "topic" : "binlog_ai-cloud-smart"
+        },
+        "name" : "kafka11writer"
+      }
+    },
+      {
+        "reader" : {
+          "parameter" : {
+            "jdbcUrl" : "jdbc:mysql://10.128.123.154:3306/ai-cloud-imgstorelog?charset=utf8",
+            "username" : "cloudwalk",
+            "password" : "cloudwalk",
+            "host" : "10.128.123.154",
+            "table" : [ "compare_records","feature_log","visithistory_statistic" ],
+            "cat" : "insert,update,delete",
+            "schema" : "ai-cloud-imgstorelog",
+            "pavingData" : true
+          },
+          "name" : "binlogreader"
+        },
+        "writer" : {
+          "parameter" : {
+            "producerSettings" : {
+              "zookeeper.connect" : "10.128.123.154:12181/kafka,10.128.123.154:22181/kafka,10.128.123.154:32181/kafka",
+              "bootstrap.servers" : "10.128.123.154:19092,10.128.123.154:29092,10.128.123.154:39092"
+            },
+            "topic" : "binlog_ai-cloud-imgstorelog"
+          },
+          "name" : "kafka11writer"
+        }
+      }
+    ],
+    "setting" : {
+    }
+  }
+}
